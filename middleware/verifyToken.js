@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import Test from "../../models/test.model.js";
-import { asyncHandler } from "../custom/asynHandler.js";
-import { message } from "../custom/message.js";
+import Test from "../models/test.model.js";
+import { asyncHandler } from "../utils/custom/asynHandler.js";
+import { message } from "../utils/custom/message.js";
 
 export const verfiyToken = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;

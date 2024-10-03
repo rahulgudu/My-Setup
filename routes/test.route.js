@@ -1,6 +1,6 @@
 import express from "express";
 import { getData, test, testSignToken } from "../controllers/test.controller.js";
-import { verfiyToken } from "../utils/features/verifyToken.js";
+import { verfiyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
