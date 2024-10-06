@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import { message } from "./utils/custom/message.js";
 import { dbConfig } from "./utils/dbConfig/dbConfig.js";
 import { testRouter } from "./routes/test.route.js";
@@ -12,6 +13,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 //routes
 app.get("/health", (req, res) => {

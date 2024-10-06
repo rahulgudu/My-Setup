@@ -14,6 +14,17 @@ export const test = asyncHandler(async (req, res) => {
 
 export const testSignToken = asyncHandler(async (req, res) => {
   const { name } = req.body;
+  const exists = await Test.findOne({ name: name });
+  if (exists) {
+    const token = await signToken(exists._id, "10m");
+    return message({
+      status: 200,
+      message: "Logged In",
+      res,
+      success: true,
+      responseData: token,
+    });
+  }
   const data = await Test.create({
     name,
   });
