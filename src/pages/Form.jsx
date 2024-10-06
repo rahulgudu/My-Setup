@@ -3,12 +3,14 @@ import { useTestMutation } from "../redux/api/testApi";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userExist } from "../redux/reducers/testReducer";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const [error, setError] = useState(null);
   const { register, handleSubmit } = useForm();
   const [testAPI] = useTestMutation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     try {
       const { data, error } = await testAPI(values);
@@ -19,6 +21,7 @@ export default function Form() {
       if (data.success) {
         // console.log(data);
         dispatch(userExist(data.responseData));
+        navigate("/");
       }
     } catch (error) {
       throw new Error(error);

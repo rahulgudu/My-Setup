@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, DialogPanel } from "@headlessui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { userNotExist } from "../redux/reducers/testReducer";
+import { persistor } from "../redux/store";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigation = [
     { name: "Product", href: "#" },
@@ -10,6 +16,14 @@ const Header = () => {
     { name: "Marketplace", href: "#" },
     { name: "Company", href: "#" },
   ];
+  const { user } = useSelector((state) => state.testReducer);
+  const handleLogIn = () => {
+    navigate("/login");
+  };
+  const handleLogout = () => {
+    persistor.purge();
+    dispatch(userNotExist());
+  };
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav
@@ -45,9 +59,19 @@ const Header = () => {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-semibold leading-6 text-gray-900">
+              Log Out <span aria-hidden="true">&rarr;</span>
+            </button>
+          ) : (
+            <button
+              onClick={handleLogIn}
+              className="text-sm font-semibold leading-6 text-gray-900">
+              Log In <span aria-hidden="true">&rarr;</span>
+            </button>
+          )}
         </div>
       </nav>
       <Dialog
