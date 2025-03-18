@@ -5,6 +5,8 @@
     "rootDir": "src",
     "moduleResolution": "nodenext",
     "outDir": "build",
-    "strict": true
-  }
+    "strict": true,
+    "declaration": true
+  },
+  "include": ["src"]
 }

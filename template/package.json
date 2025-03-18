@@ -1,5 +1,5 @@
 {
-  "name": "@create/node-ts-starter",
+  "name": "add-node-ts-starter",
   "version": "1.0.0",
   "description": "This is a starter template for nodejs with typescript",
   "main": "./build/app.js",
@@ -18,8 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@create/node-ts-starter": "file:",
-    "@rahulgudu/node-ts-starter": "file:",
+    "add-node-ts-starter": "file:",
     "chalk": "^5.4.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
