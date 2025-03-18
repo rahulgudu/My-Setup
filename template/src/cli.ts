@@ -21,7 +21,8 @@ const createProject = async () => {
 
   const projectName = args[0];
   const targetPath = path.join(process.cwd(), projectName);
-  const templatePath = path.join(__dirname, "../template"); // Template folder
+  const templatePath = path.join(__dirname, "../../template");
+
 
   // Check if directory exists
   if (fs.existsSync(targetPath)) {

@@ -1,6 +1,6 @@
 {
   "name": "add-node-ts-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a starter template for nodejs with typescript",
   "main": "./build/app.js",
   "type": "module",
